@@ -12,12 +12,13 @@ From your checkout directory:
 		
 1. Build the image
 
-        docker build -t apiri/apache-nifi .
+        docker build -t mcgilman/apache-nifi .
 		
 2. Run the image 
 
 		docker run -i -t --rm \
 	   	 	-p 8443:443
+	   	 	-v ${nifi_path}:/opt/nifi \
 	    	-v ${cert_path}:/opt/certs \
 	    	-v $(readlink -f ./authorized-users.xml):/opt/nifi/conf/authorized-users.xml \
 	    	-e KEYSTORE_PATH=/opt/certs/keystore.jks \
